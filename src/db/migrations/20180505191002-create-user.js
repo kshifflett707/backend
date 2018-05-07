@@ -1,28 +1,21 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('Comments', {
+    return queryInterface.createTable('Users', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      post_id: {
-        type: Sequelize.INTEGER,
-        // references: {
-        //   model: 'Post',
-        //   key: 'id'
-        // }
+      displayName: {
+        type: Sequelize.STRING,
+        unique: true
       },
-      text: {
+      email: {
         type: Sequelize.STRING
       },
-      user_id: {
-        type: Sequelize.INTEGER,
-        // references: {
-        //   model: 'User',
-        //   key: 'id'
-        // }
+      password: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
@@ -34,7 +27,7 @@ module.exports = {
       }
     });
   },
-  down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('Comments');
+  down: (queryInterface/*, Sequelize*/) => {
+    return queryInterface.dropTable('Users');
   }
 };

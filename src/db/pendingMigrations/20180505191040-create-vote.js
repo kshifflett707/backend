@@ -8,14 +8,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      post_id: {
-        type: Sequelize.INTEGER
+      postId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Posts',
+          key: 'id'
+        }
       },
-      vote_type_id: {
-        type: Sequelize.INTEGER
+      voteTypeId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'VoteTypes',
+          key: 'id'
+        }
       },
-      user_id: {
-        type: Sequelize.INTEGER
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'Users',
+          key: 'id'
+        }
       },
       createdAt: {
         allowNull: false,
