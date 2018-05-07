@@ -4,24 +4,20 @@ let questionsController = {
     patch: {}
 };
 
-questionsController.get.commentsByQuestionId = (req, res) => {
-    res.json('These are comments by question id').end()
+questionsController.get.questions = (req, res) => {
+    res.send('questionsController.get.questions');
 };
 
-questionsController.get.answersByQuestionId = (req, res) => {
-    res.json('These are answers by question id').end()
-}
+questionsController.get.question = (req, res) => {
+    res.send('questionsController.get.question');
+};
 
-questionsController.get.questionByQuestionId = (req, res) => {
-    res.json('This is a question by question id').end()
-}
+questionsController.post.question = (req, res) => {
+    res.send('questionsController.post.question');
+};
 
-questionsController.get.questionsByUserId = (req, res) => {
-    res.json('These are questions by user id').end()
-}
-
-questionsController.get.allQuestions = (req, res) => {
-    res.json('These are all questions').end()
-}
+questionsController.patch.question = (req, res) => {
+    res.send('questionsController.patch.question');
+};
 
 export default questionsController
