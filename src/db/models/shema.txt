@@ -1,0 +1,32 @@
+EXTREME SCHEMA DESIGN
+
+POSTS
+-can belong to on question
+-can belong to one user
+-can be voted on by many users
+-can be voted on only once by a single user
+
+
+Users
+-has many questions
+-has many medals
+-
+
+
+Comments
+
+
+Votes
+-belong to many POSTS
+-belong to many users
+
+
+Stars
+
+
+Tags
+-any tag can be associated to many questions
+
+
+Medals
+-can be associated with any user

@@ -1,4 +1,4 @@
-import bcrypt from 'bcrypt';
+import bcrypt from 'bcrypt'
 
 export default (sequelize, DataTypes) => {
   var User = sequelize.define('User', {
@@ -34,13 +34,17 @@ export default (sequelize, DataTypes) => {
      */
     hooks: {
       afterValidate: (user) => {
-        user.password = bcrypt.hashSync(user.password, 8);
+        user.password = bcrypt.hashSync(user.password, 8)
       }
     }
   });
-  User.associate = function(/*models*/) {
-     // User.hasMany(models.Post)
-     // User.hasMany(models.Vote)
+  User.associate = (models) => {
+    // this will give User the magic methods for addPost, etc.
+    // but we already have a foreign key for postId in the User model, so it will maintain
+    // the 1:m relationship
+    User.hasMany(models.Post)
+    //User.hasMany(models.Vote)
+    //User.hasMany(models.Comment)
   };
-  return User;
-};
+  return User
+}
