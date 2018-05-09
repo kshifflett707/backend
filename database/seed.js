@@ -8,52 +8,59 @@ const Post = require('./models/Post');
 // each of the following array will be iterated and Created
 const userData = [
   {
-    firstName: 'Kyle',
-    lastName: 'Shifflett',
-    age: 1,
+    username: 'Kyle',
+    password: 'password'
   },
   {
-    firstName: 'Aidan',
-    lastName: 'Wignall',
-    age: 2,
+    username: 'Aidan',
+    password: 'password'
   },
   {
-    firstName: 'Jeffrey',
-    lastName: 'Smith',
-    age: 3,
+    username: 'Jeffrey',
+    password: 'password'
   },
   {
-    firstName: 'Sebastian',
-    lastName: 'Heil',
-    age: 1,
+    username: 'Sebastian',
+    password: 'password'
   },
   {
-    firstName: 'Jon',
-    lastName: 'White',
-    age: 2,
+    username: 'Jon',
+    password: 'password'
   },
   {
-    firstName: 'Hannah',
-    lastName: 'Salvestrin',
-    age: 1,
+    username: 'Hannah',
+    password: 'password'
   },
 ];
 
 const postData = [
   {
-    body: 'pizza'
+    body: 'I love pizza',
+    type: 'comment'
   },
   {
-    body: 'dumplings'
+    body: 'wow, cool. I like dumplings',
+    type: 'comment'
   },
   {
-    body: 'lettuce'
+    body: 'lettuce is the best',
+    type: 'comment'
   },
   {
-    body: 'kao soi'
+    body: 'kao soi yan chi mi likey likey',
+    type: 'comment'
   },
   {
-    body: 'cheetos'
+    body: 'cheetos are the move',
+    type: 'comment'
+  },
+  {
+    body: 'What is the answer to this?',
+    type: 'question'
+  },
+  {
+    body: 'The answer to this is ....',
+    type: 'answer'
   }
 ]
 

@@ -12,10 +12,12 @@ module.exports = db;
 const User = require('./models/User');
 const Post = require('./models/Post');
 
-// this will put a foreign key for parkId in the Puppy model
-// and give Puppy .setPark() and .getPark() instance methods
+// this will put a foreign key for userId in the Post model
+// and give Post .setUser() and .getUser() instance methods
 Post.belongsTo(User);
-// this will give Park the magic methods for addPuppy, etc.
-// but we already have a foreign key for parkId in the Puppy model, so it will maintain
+// this will give User the magic methods for addPost, etc.
+// but we already have a foreign key for userId in the Post model, so it will maintain
 // the 1:m relationship
 User.hasMany(Post);
+
+//Post.belongsTo(Type);
