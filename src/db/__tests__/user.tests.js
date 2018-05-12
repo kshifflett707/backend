@@ -1,7 +1,7 @@
-import { createUser, fetchUser, verifyPassword, verifyLogin } from '../util/user'
 import db from '../models'
 
 const User = db.User;
+const { createUser, fetchUser, verifyPassword, verifyLogin } = User 
 
 const clearDatabase = (done) => {
   User.destroy({

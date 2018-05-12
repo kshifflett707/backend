@@ -1,7 +1,10 @@
 import bcrypt from 'bcrypt';
+import Promise from 'bluebird'
+
+Promise.promisifyAll(bcrypt);
 
 export default (sequelize, DataTypes) => {
-  var User = sequelize.define('User', {
+  const User = sequelize.define('User', {
     username: {
       type: DataTypes.STRING,
       unique: true,
@@ -38,8 +41,48 @@ export default (sequelize, DataTypes) => {
       }
     }
   });
+  
   User.associate = function(models) {
     User.hasMany(models.Post);
   };
+  
+  User.createUser = (newUser) => User.create(newUser);
+
+  User.destroyUser = (username) => User.destroy({
+    where: {username}
+  });
+
+  User.fetchUser = (username) => User.findOne({
+    where: {username}
+  })
+
+  User.verifyPassword = (password, hashedPassword) => bcrypt.compareAsync(password, hashedPassword)
+
+  User.verifyLogin = async (username, password) => {
+    
+    let user = await User.fetchUser(username);
+    
+    if (!user) {
+      throw new Error('username does not exist');
+    }
+
+    const isMatch = await User.verifyPassword(password, user.password);
+
+    if (!isMatch) {
+      throw new Error('password is incorrect');
+    }
+    
+    delete user.password;
+    return user;
+  }
+
+  User.queryUsers = (query) => User.findAll({
+    where: query,
+    include: [{all: true}]
+  });
+
+
+
+  
   return User;
 };

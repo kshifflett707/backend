@@ -1,7 +1,8 @@
 export default (sequelize, DataTypes) => {
-  var Post = sequelize.define('Post', {
-    postref: {
+  const Post = sequelize.define('Post', {
+    associatedQuestionId: {
       type: DataTypes.INTEGER,
+      allowNull: true
     },
     userid: {
       type: DataTypes.INTEGER,
@@ -38,6 +39,28 @@ export default (sequelize, DataTypes) => {
     Post.belongsTo(models.Post);
     Post.hasMany(models.Post);
   };
+
+  Post.getAllPosts = () => Post.findAll({
+    include: [{all: true}]
+  });
+
+  Post.getPostsByType = (type) => Post.findAll({
+    where: {type}
+  });
+
+  Post.getPostsByQuery = (query) => Post.findAll({
+    where: query
+  });
+
+  Post.createNewPost = ({userid, title, body, type, associatedQuestionId}) => Post.create({
+    userid,
+    title,
+    body,
+    type,
+    associatedQuestionId: associatedQuestionId
+  });
+
+  Post.getPostById = (postId) => Post.findById(postId);
 
   return Post;
 
