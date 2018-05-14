@@ -36,10 +36,15 @@ const userData = [
     email: "email@email.com"
   }
 ];
-
+const bcrypt = require('bcrypt');
 
 module.exports = {
+  
   up: (queryInterface, Sequelize) => {
+    for(const user of userData) {
+      user.password = bcrypt.hashSync(user.password, 8);
+    }
+    
     return queryInterface.bulkInsert('Users', userData, {});
   },
 
