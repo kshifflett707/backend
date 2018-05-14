@@ -1,23 +1,23 @@
 import { Post } from '../../db/models'
 
-const PostTypeError = (expectedType, type) => 
+const PostTypeError = (expectedType, type) =>
   Error(`expected post of type ${expectedType} got a post of type ${type}`);
 
 // may never get used
-export const allPosts = (req, res) => 
+export const allPosts = (req, res) =>
   Post.getAllPosts().then((posts) => res.json(posts));
 
-export const byQuery = (req, res) => 
+export const byQuery = (req, res) =>
   Post.getPostsByQuery(req.query)
   .then((posts) => res.json(posts))
   .catch((err) => res.status(401).json({err}));
 
-export const postsByType =(postType) => (req, res) => 
+export const postsByType =(postType) => (req, res) =>
   Post.getPostsByType(postType)
   .then((posts) => res.json(posts));
 
 
-export const postById = (postType) => (req, res) => 
+export const postById = (postType) => (req, res) =>
   Post.getPostById(req.params.qid)
   .then((post) => {
     if (post.type !== postType) {
