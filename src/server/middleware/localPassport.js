@@ -1,10 +1,10 @@
 import passport from 'passport'
 import { Strategy as LocalStrategy } from 'passport-local'
-
+import db from '../../db/models/index'
 import { User } from '../../db/models'
 
 const localStrategy = (username, password, done) => {
-  return User.verifyLogin(username, password)
+  return db.User.verifyLogin(username, password)
   .then((user) => done(null, user))
   .catch((err) => done(null, false, err));
 }

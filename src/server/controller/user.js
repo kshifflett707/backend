@@ -1,5 +1,5 @@
 import { User } from '../../db/models'
-
+import db from '../../db/models/index'
 import passport from '../middleware/localPassport'
 import log from '../utils/logger'
 
@@ -9,7 +9,7 @@ let controller = {
 };
 
 controller.post.signup = (req, res) => {
-  return User.createUser(req.body)
+  return db.User.createUser(req.body)
     .then(() => {
       req.login(req.body, (err) => {
         if (err) {
@@ -32,14 +32,14 @@ controller.post.logout = (req, res) => {
 }
 
 controller.post.login = (req, res) => {
-  
+
   passport.authenticate('local', (err, user, info) => {
-    
+
     if (err || !user) {
       log.info('there was an error authenticating user', err)
       return res.status(422).send(info);
     }
-    
+
     user = user.dataValues;
 
     delete user.password;
