@@ -11,11 +11,13 @@ const UserId = 1;
 const title = 'title';
 const body = 'body';
 const type = 1;
+const bounty = .01;
 
 const post = {
   UserId,
   title,
   body,
+  bounty,
 };
 
 describe('test createNewPost and getPOstsByQuery', () => {
@@ -72,7 +74,6 @@ describe('test getPostsByType', () => {
     const lengthBefore = posts.length;
 
     await Post.createNewPost({...post, PostTypeId: 2});
-    console.log(lengthBefore);    
     posts = await Post.getPostsByType(1);
 
     expect(posts.length).toBe(lengthBefore);
