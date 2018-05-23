@@ -5,7 +5,7 @@ import db from '../../db/models'
 const User = db.User;
 
 const localStrategy = (username, password, done) => {
-  return db.User.verifyLogin(username, password)
+  return User.verifyLogin(username, password)
   .then((user) => done(null, user))
   .catch((err) => done(null, false, err));
 }
