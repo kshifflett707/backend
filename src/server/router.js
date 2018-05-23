@@ -22,13 +22,18 @@ router.get('/questions/all', question.get.questions.all);
 router.get('/questions', question.get.questions);
 router.get('/search', search.get.documents)
 // returns question and all answers
-router.get('/questions/:id', question.get.question); 
+router.get('/questions/:id', question.get.question);
 router.post('/question', question.post.question);
 
 router.get('/answers/all', answer.get.answers.all);
 router.get('/answers', answer.get.answers);
-router.get('/answers/:id', answer.get.answer);
+router.get('/answers/:id', queryPostController);
 router.post('/answer', answer.post.answer);
+
+router.patch('/answers/:id', answer.patch.answer);
+router.patch('/questions/:id', question.patch.question);
+
+
 
 export default router
 

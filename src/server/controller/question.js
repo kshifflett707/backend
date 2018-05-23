@@ -1,4 +1,4 @@
-import { postsByType, postById, newPost } from './post'
+import { postsByType, postById, newPost, updatePostVote } from './post'
 import db from '../../db/models'
 
 const Post = db.Post;
@@ -16,6 +16,8 @@ question.get.questions = (req, res) => res.end('TODO for machine learning');
 question.get.questions.all = postsByType(TYPE);
 
 question.post.question = newPost(TYPE);
+
+question.patch.question = updatePostVote();
 
 question.get.question = async (req, res) => {
   const id = res.params.id
