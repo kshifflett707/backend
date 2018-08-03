@@ -1,11 +1,11 @@
 import app from './app'
 import log from './utils/logger'
 
-import updateRecomendations from './utils/updateRecomendations'
+// import updateRecomendations from './utils/updateRecomendations'
 
-const MINUTES = 30
-setInterval(updateRecomendations, 1000 * 60 * MINUTES)
-updateRecomendations()
+// const MINUTES = 30
+// setInterval(updateRecomendations, 1000 * 60 * MINUTES)
+// updateRecomendations()
 
 const { PORT = 8080 } = process.env
 

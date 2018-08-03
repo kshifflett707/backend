@@ -1,7 +1,6 @@
 'use strict';
 
-const bcrypt = require('bcrypt');
-
+const bcrypt = require('bcryptjs');
 const userData = require('../seed/1-user');
 
 module.exports = {
